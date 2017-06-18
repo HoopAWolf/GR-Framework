@@ -1,0 +1,6 @@
+To-Do List:
+		-Complete Math Utility and Add to Math Namespace
+		-Complete Entity Manager Class
+		-Seperate Mesh List from Mesh Builder 
+		-Create Base Database Class
+		-Add Sorting Namespace
