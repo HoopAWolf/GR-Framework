@@ -4,3 +4,4 @@ To-Do List:
 		-Seperate Mesh List from Mesh Builder 
 		-Create Base Database Class
 		-Add Sorting Namespace
+		-Add a Proper Debugger Tool
