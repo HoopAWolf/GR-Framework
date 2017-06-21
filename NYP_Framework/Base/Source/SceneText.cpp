@@ -263,12 +263,6 @@ void SceneText::Exit()
 	GraphicsManager::GetInstance()->DetachCamera();
 
 
-
-
-
-
-
-
 	// Delete the lights
 	delete lights[0];
 	delete lights[1];
