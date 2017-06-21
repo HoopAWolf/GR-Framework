@@ -1,5 +1,3 @@
-
-
 #include "Application.h"
 
 #define _DEBUGMODE 1;	//	0=Non-debug mode, 1=Debug mode
