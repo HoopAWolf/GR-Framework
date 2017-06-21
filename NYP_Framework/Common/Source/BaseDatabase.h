@@ -11,7 +11,7 @@ protected:
 	sqlite3* db;
 public:
 	bool LoadDatabase(const std::string& filepath);
-
+	bool EmptyDatabase();
 };
 
 #endif

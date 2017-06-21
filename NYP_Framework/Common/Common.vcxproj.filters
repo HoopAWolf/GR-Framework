@@ -83,6 +83,9 @@
     <ClCompile Include="Source\MeshList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\BaseDatabase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\MatrixStack.h">
@@ -166,10 +169,10 @@
     <ClInclude Include="Source\Mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BaseDatabase.h">
+    <ClInclude Include="Source\MeshList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\MeshList.h">
+    <ClInclude Include="Source\BaseDatabase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
