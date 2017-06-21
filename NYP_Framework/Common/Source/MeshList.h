@@ -22,6 +22,7 @@ public:
 	void RemoveMesh(const string& _meshName);
 
 private:
+	friend Singleton<MeshList>;
 	map<string, Mesh*> meshMap;
 };
 

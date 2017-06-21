@@ -1,4 +1,5 @@
 #include "MeshList.h"
+#include "Mesh.h"
 
 Mesh* MeshList::GetMesh(const string& _meshName)
 {
