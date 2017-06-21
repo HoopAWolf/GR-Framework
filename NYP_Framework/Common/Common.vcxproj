@@ -96,11 +96,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)sqlite3\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)sqlite3\include;$(SolutionDir)glew\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)sqlite3\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SolutionDir)sqlite3\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)sqlite3\include;$(SolutionDir)glew\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)sqlite3\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
