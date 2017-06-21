@@ -49,7 +49,7 @@ void SpriteEntity::RenderUI()
 
 SpriteEntity* Create::Sprite2DObject(const std::string& _meshName, const Vector3& _position, const Vector3& _scale)
 {
-	Mesh* modelMesh = MeshBuilder::GetInstance()->GetMesh(_meshName);
+	Mesh* modelMesh = MeshList::GetInstance()->GetMesh(_meshName);
 	if (modelMesh == nullptr)
 		return nullptr;
 
@@ -63,7 +63,7 @@ SpriteEntity* Create::Sprite2DObject(const std::string& _meshName, const Vector3
 
 SpriteEntity* Create::Sprite3DObject(const std::string& _meshName, const Vector3& _position, const Vector3& _scale)
 {
-	Mesh* modelMesh = MeshBuilder::GetInstance()->GetMesh(_meshName);
+	Mesh* modelMesh = MeshList::GetInstance()->GetMesh(_meshName);
 	if (modelMesh == nullptr)
 		return nullptr;
 

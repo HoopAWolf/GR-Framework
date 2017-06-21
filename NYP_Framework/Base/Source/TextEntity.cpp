@@ -51,7 +51,7 @@ void TextEntity::RenderUI()
 
 TextEntity* Create::Text2DObject(const std::string& _meshName, const Vector3& _position, const std::string& _text, const Vector3& _scale, const Color& _color)
 {
-	Mesh* modelMesh = MeshBuilder::GetInstance()->GetMesh(_meshName);
+	Mesh* modelMesh = MeshList::GetInstance()->GetMesh(_meshName);
 	if (modelMesh == nullptr)
 		return nullptr;
 
@@ -65,7 +65,7 @@ TextEntity* Create::Text2DObject(const std::string& _meshName, const Vector3& _p
 
 TextEntity* Create::Text3DObject(const std::string& _meshName, const Vector3& _position, const std::string& _text, const Vector3& _scale, const Color& _color)
 {
-	Mesh* modelMesh = MeshBuilder::GetInstance()->GetMesh(_meshName);
+	Mesh* modelMesh = MeshList::GetInstance()->GetMesh(_meshName);
 	if (modelMesh == nullptr)
 		return nullptr;
 

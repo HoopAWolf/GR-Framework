@@ -88,11 +88,11 @@ Vector3 GroundEntity::GetMinBoundary(void)
 
 GroundEntity* Create::Ground(const std::string& _meshName1, const std::string& _meshName2)
 {
-	Mesh* modelMesh1 = MeshBuilder::GetInstance()->GetMesh(_meshName1);
+	Mesh* modelMesh1 = MeshList::GetInstance()->GetMesh(_meshName1);
 	if (modelMesh1 == nullptr)
 		return nullptr;
 
-	Mesh* modelMesh2 = MeshBuilder::GetInstance()->GetMesh(_meshName2);
+	Mesh* modelMesh2 = MeshList::GetInstance()->GetMesh(_meshName2);
 	if (modelMesh2 == nullptr)
 		return nullptr;
 

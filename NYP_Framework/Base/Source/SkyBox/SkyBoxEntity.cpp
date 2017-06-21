@@ -101,27 +101,27 @@ SkyBoxEntity* Create::SkyBox(	const std::string& _meshName0,
 								const std::string& _meshName4,
 								const std::string& _meshName5)
 {
-	Mesh* modelMesh0 = MeshBuilder::GetInstance()->GetMesh(_meshName0);
+	Mesh* modelMesh0 = MeshList::GetInstance()->GetMesh(_meshName0);
 	if (modelMesh0 == nullptr)
 		return nullptr;
 
-	Mesh* modelMesh1 = MeshBuilder::GetInstance()->GetMesh(_meshName1);
+	Mesh* modelMesh1 = MeshList::GetInstance()->GetMesh(_meshName1);
 	if (modelMesh1 == nullptr)
 		return nullptr;
 
-	Mesh* modelMesh2 = MeshBuilder::GetInstance()->GetMesh(_meshName2);
+	Mesh* modelMesh2 = MeshList::GetInstance()->GetMesh(_meshName2);
 	if (modelMesh2 == nullptr)
 		return nullptr;
 
-	Mesh* modelMesh3 = MeshBuilder::GetInstance()->GetMesh(_meshName3);
+	Mesh* modelMesh3 = MeshList::GetInstance()->GetMesh(_meshName3);
 	if (modelMesh3 == nullptr)
 		return nullptr;
 
-	Mesh* modelMesh4 = MeshBuilder::GetInstance()->GetMesh(_meshName4);
+	Mesh* modelMesh4 = MeshList::GetInstance()->GetMesh(_meshName4);
 	if (modelMesh4 == nullptr)
 		return nullptr;
 
-	Mesh* modelMesh5 = MeshBuilder::GetInstance()->GetMesh(_meshName5);
+	Mesh* modelMesh5 = MeshList::GetInstance()->GetMesh(_meshName5);
 	if (modelMesh5 == nullptr)
 		return nullptr;
 

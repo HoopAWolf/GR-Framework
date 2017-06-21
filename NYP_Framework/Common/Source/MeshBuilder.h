@@ -1,13 +1,7 @@
 #ifndef MESH_BUILDER_H
 #define MESH_BUILDER_H
 
-#include "SingletonTemplate.h"
-#include "Vertex.h"
-#include <map>
-#include <string>
-
-// Forward Declaration
-class Mesh;
+#include "MeshList.h"
 
 /******************************************************************************/
 /*!
@@ -29,13 +23,6 @@ public:
 	Mesh* GenerateOBJ(const std::string &meshName, const std::string &file_path);
 	Mesh* GenerateText(const std::string &meshName, unsigned row, unsigned col);
 	Mesh* GenerateSkyPlane(const std::string &meshName, Color color, int slices,float PlanetRadius, float AtmosphereRadius, float hTile, float vTile);
-
-	Mesh* GetMesh(const std::string& _meshName);
-	void AddMesh(const std::string& _meshName, Mesh* _newMesh);
-	void RemoveMesh(const std::string& _meshName);
-
-private:
-	std::map<std::string, Mesh*> meshMap;
 };
 
 #endif

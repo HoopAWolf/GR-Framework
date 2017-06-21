@@ -23,6 +23,7 @@
     <ClCompile Include="Source\MatrixStack.cpp" />
     <ClCompile Include="Source\Mesh.cpp" />
     <ClCompile Include="Source\MeshBuilder.cpp" />
+    <ClCompile Include="Source\MeshList.cpp" />
     <ClCompile Include="Source\MouseController.cpp" />
     <ClCompile Include="Source\Mtx44.cpp" />
     <ClCompile Include="Source\RenderHelper.cpp" />
@@ -49,6 +50,7 @@
     <ClInclude Include="Source\MatrixStack.h" />
     <ClInclude Include="Source\Mesh.h" />
     <ClInclude Include="Source\MeshBuilder.h" />
+    <ClInclude Include="Source\MeshList.h" />
     <ClInclude Include="Source\MouseController.h" />
     <ClInclude Include="Source\Mtx44.h" />
     <ClInclude Include="Source\MyMath.h" />
