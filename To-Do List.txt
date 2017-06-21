@@ -5,3 +5,7 @@ To-Do List:
 		-Create Base Database Class
 		-Add Sorting Namespace
 		-Add a Proper Debugger Tool
+		-Add the following external libraries:
+			-Errklang
+			-Sqlite3(Completed by Kitson on 6/20)
+		
