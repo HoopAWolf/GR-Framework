@@ -23,6 +23,8 @@ public:
 	static void MouseButtonCallbacks(GLFWwindow* window, int button, int action, int mods);
 	static void MouseScrollCallbacks(GLFWwindow* window, double xoffset, double yoffset);
 
+	static void InitAllMeshes();
+
 	int GetWindowHeight();
 	int GetWindowWidth();
 	

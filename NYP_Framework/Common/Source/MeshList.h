@@ -20,9 +20,8 @@ public:
 	Mesh* GetMesh(const string& _meshName);
 	void AddMesh(const string& _meshName, Mesh* _newMesh);
 	void RemoveMesh(const string& _meshName);
-
+	bool IsMeshEmpty();
 private:
-	friend Singleton<MeshList>;
 	map<string, Mesh*> meshMap;
 };
 
