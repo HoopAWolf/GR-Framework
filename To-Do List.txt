@@ -8,4 +8,4 @@ To-Do List:
 		-Add the following external libraries:
 			-Errklang
 			-Sqlite3(Completed by Kitson on 6/20)
-		
+		-Create Editor Class (Reading and Writing to file); Will be done by Eugene.
