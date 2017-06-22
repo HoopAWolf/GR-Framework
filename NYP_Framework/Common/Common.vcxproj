@@ -60,6 +60,7 @@
     <ClInclude Include="Source\SceneManager.h" />
     <ClInclude Include="Source\ShaderProgram.h" />
     <ClInclude Include="Source\SingletonTemplate.h" />
+    <ClInclude Include="Source\SQLKeywords.h" />
     <ClInclude Include="Source\timer.h" />
     <ClInclude Include="Source\Utility.h" />
     <ClInclude Include="Source\Vector2.h" />

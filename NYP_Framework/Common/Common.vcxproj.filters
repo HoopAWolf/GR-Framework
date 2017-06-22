@@ -175,5 +175,8 @@
     <ClInclude Include="Source\BaseDatabase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\SQLKeywords.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
