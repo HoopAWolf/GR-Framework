@@ -31,3 +31,11 @@ void MeshList::RemoveMesh(const string& _meshName)
 		meshMap.erase(_meshName);
 	}
 }
+
+bool MeshList::IsMeshEmpty()
+{
+	if (meshMap.size() > 0)
+		return false;
+
+	return true;
+}

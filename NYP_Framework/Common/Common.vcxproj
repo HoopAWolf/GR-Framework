@@ -20,7 +20,6 @@
     <ClCompile Include="Source\LightBase.cpp" />
     <ClCompile Include="Source\LoadOBJ.cpp" />
     <ClCompile Include="Source\LoadTGA.cpp" />
-    <ClCompile Include="Source\MathUtility.cpp" />
     <ClCompile Include="Source\MatrixStack.cpp" />
     <ClCompile Include="Source\Mesh.cpp" />
     <ClCompile Include="Source\MeshBuilder.cpp" />
@@ -47,7 +46,6 @@
     <ClInclude Include="Source\LoadOBJ.h" />
     <ClInclude Include="Source\LoadTGA.h" />
     <ClInclude Include="Source\Material.h" />
-    <ClInclude Include="Source\MathUtility.h" />
     <ClInclude Include="Source\MatrixStack.h" />
     <ClInclude Include="Source\Mesh.h" />
     <ClInclude Include="Source\MeshBuilder.h" />

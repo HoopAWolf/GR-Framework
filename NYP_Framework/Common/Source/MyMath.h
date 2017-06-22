@@ -250,6 +250,148 @@ Return a random float between min and max
 		return (num + min);
 	}//end of RandFloatMinMax function
 
+ /******************************************************************************/
+ /*
+ \brief Find the Factorial of n
+ \param n
+	 Non-negative integer n
+ \return
+	Factorial of n
+ */
+ /******************************************************************************/
+	inline unsigned long long factorial(int n)
+	{
+		unsigned long long result = n;
+		for (size_t i = 1; i < n; ++i) {
+			result *= i;
+		}
+		return result;
+	}
+
+/******************************************************************************/
+/*
+\brief Find the number of ways ordered r objects can be selected from n objects
+\param n
+	Number of objects
+\param r
+	Number of selected objects
+\return
+	Number of ways an ordered set of r objects can be selected from n objects
+*/
+/******************************************************************************/
+	inline int nPr(int n, int r)
+	{
+		return factorial(n) / factorial(n - r);
+	}
+
+/******************************************************************************/
+/*
+\brief Find the number of ways unordered r objects can be selected from n objects
+\param n
+	Number of objects
+\param r
+	Number of selected objects
+\return
+	Number of ways an unordered set of r objects can be selected from n objects
+*/
+	/******************************************************************************/
+	inline int nCr(int n, int r)
+	{
+		return nPr(n, r) / factorial(r);
+	}
+
+//AP -> Arithmetic Progression
+//Pattern with increments
+//Example -> 1, 3, 5, 7, 9...
+
+//GP -> Geometric Progression
+//Pattern with Multiplication
+//Example -> 2, 4, 8, 16, 32...
+
+/******************************************************************************/
+/*
+\brief Find the value at nth term in a AP sequence
+
+\param a
+	Initial term
+\param d
+	Common difference
+\param n
+	nth term
+\return
+	Value at nth term
+*/
+/******************************************************************************/
+	inline int nTermAP(int a, int d, int n)
+	{
+		return a + (n - 1) * d;
+	}
+
+/******************************************************************************/
+/*
+\brief Find the summation of values from the first term to nth term in AP sequence
+
+\param a
+	Initial term
+\param r
+	Common difference
+\param n
+	End term for summation
+\return
+	Summation of the values
+*/
+/******************************************************************************/
+	inline int summationAP(int a, int d, int n)
+	{
+		int summation = 0;
+		for (size_t i = 1; i <= n; ++i) {
+			summation += nTermAP(a, d, i);
+		}
+		return summation;
+	}
+
+/******************************************************************************/
+/*
+\brief Find the value of nth term in a GP sequence
+
+\param a
+	Initial term
+\param r
+	Common ratio
+\param n
+	nth term
+\return
+	Value at nth term
+*/
+/******************************************************************************/
+	inline int nTermGP(int a, int r, int n)
+	{
+		return pow(a * r, n - 1);
+	}
+
+/******************************************************************************/
+/*
+\brief Find the summation of values from the first term to nth term in a GP sequence
+
+\param a
+	Initial term
+\param r
+	Common difference
+\param n
+	End term for summation
+\return
+	Summation of the values
+*/
+/******************************************************************************/
+	inline int summationGP(int a, int r, int n)
+	{
+		int summation = 0;
+		for (size_t i = 1; i <= n; ++i) {
+			summation += nTermGP(a, r, i);
+		}
+		return summation;
+	}
+
 }//end namespace Math
 
 /******************************************************************************/
