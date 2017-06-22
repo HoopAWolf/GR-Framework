@@ -10,6 +10,9 @@
 #include "MatrixStack.h"
 #include "GenericEntity.h"
 
+/*Editor*/
+#include "Editor\Editor.h"
+
 class ShaderProgram;
 class SceneManager;
 class TextEntity;
@@ -38,6 +41,9 @@ private:
 	GenericEntity* theCube;
 
 	static SceneText* sInstance; // The pointer to the object that gets registered
+
+	/*Editor Object for writing and reading text files*/
+	Editor *theEditor;
 };
 
 #endif

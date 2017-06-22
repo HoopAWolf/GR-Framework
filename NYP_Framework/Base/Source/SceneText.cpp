@@ -150,6 +150,8 @@ void SceneText::Init()
 		textObj[i] = Create::Text2DObject("text", Vector3(-halfWindowWidth, -halfWindowHeight + fontSize*i + halfFontSize, 0.0f), "", Vector3(fontSize, fontSize, fontSize), Color(0.0f,1.0f,0.0f));
 	}
 	textObj[0]->SetText("HELLO WORLD");
+
+	theEditor = new Editor();
 }
 
 void SceneText::Update(double dt)
@@ -236,6 +238,25 @@ void SceneText::Update(double dt)
 	ss1.precision(4);
 	ss1 << "Player:";
 	textObj[2]->SetText(ss1.str());
+
+	/*Editor Section*/
+	/*Write*/
+	if (KeyboardController::GetInstance()->IsKeyPressed(VK_F1))
+	{
+		theEditor->startWriting();
+	}
+	/*Load*/
+	if (KeyboardController::GetInstance()->IsKeyPressed(VK_F2))
+	{
+		theEditor->startLoading();
+		if (theEditor->getFileExist())
+			theEditor->loadText();
+	}
+	/*Delete*/
+	if (KeyboardController::GetInstance()->IsKeyPressed(VK_F3))
+	{
+		theEditor->startDeleting();
+	}
 }
 
 void SceneText::Render()
