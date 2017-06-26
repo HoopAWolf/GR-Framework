@@ -19,6 +19,9 @@
     <Filter Include="SkyBox">
       <UniqueIdentifier>{37a125cd-b9e3-4b31-923e-1226145f54a1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Editor">
+      <UniqueIdentifier>{d0ecf673-68db-4508-b179-423fa19d5f7c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Application.cpp">
@@ -60,6 +63,9 @@
     <ClCompile Include="Source\GenericEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Editor\Editor.cpp">
+      <Filter>Editor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h">
@@ -97,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="Source\GenericEntity.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Editor\Editor.h">
+      <Filter>Editor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
