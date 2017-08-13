@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\BaseDatabase.cpp" />
+    <ClCompile Include="Source\BaseDatabaseHandler.cpp" />
     <ClCompile Include="Source\CameraBase.cpp" />
     <ClCompile Include="Source\Collider\Collider.cpp" />
     <ClCompile Include="Source\EntityBase.cpp" />
@@ -37,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\BaseDatabase.h" />
+    <ClInclude Include="Source\BaseDatabaseHandler.h" />
     <ClInclude Include="Source\CameraBase.h" />
     <ClInclude Include="Source\Collider\Collider.h" />
     <ClInclude Include="Source\EntityBase.h" />

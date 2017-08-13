@@ -1,2 +1,9 @@
-﻿  BaseDatabase.cpp
+﻿  MeshList.cpp
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(265): warning C4018: '<' : signed/unsigned mismatch
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(284): warning C4244: 'return' : conversion from 'unsigned __int64' to 'int', possible loss of data
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(300): warning C4244: 'return' : conversion from 'unsigned __int64' to 'int', possible loss of data
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(347): warning C4018: '<=' : signed/unsigned mismatch
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(369): warning C4244: 'return' : conversion from 'double' to 'int', possible loss of data
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(389): warning C4018: '<=' : signed/unsigned mismatch
+BaseDatabase.obj : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
   Common.vcxproj -> C:\Users\TheUnholyGod\Documents\School\Year 2 Semester 1\SP3\NYP_Framework\Debug\Common.lib

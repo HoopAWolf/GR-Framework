@@ -4,23 +4,19 @@
 #include "sqlite3.h"
 
 #include <string>
+#include <map>
 
+template <class Object>
 class BaseDatabase
 {
 protected:
-	sqlite3* m_db;
-	std::string m_query;
+	const std::string k_name, k_filePath, k_tableName;
+    std::map<int, Object*> m_database;
 public:
-	bool LoadDatabase(const std::string& filepath);
-	bool EmptyDatabase();
-
-	template<typename First, typename ... Strings>
-	bool ExecuteQuery(First arg,const Strings&&... query);
-
-	void GenerateQuery();
-
-	template<typename First, typename ... Strings>
-	void GenerateQuery(First arg, const Strings&&... query);
+	BaseDatabase(const std::string& name,const std::string& filePath,const std::string& tableName);
+	~BaseDatabase();
+	void init();
+	Object* getObject(int id);
 };
 
 #endif

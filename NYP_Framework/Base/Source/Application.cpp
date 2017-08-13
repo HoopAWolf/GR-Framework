@@ -4,6 +4,7 @@
 #include "SceneManager.h"
 #include "GraphicsManager.h"
 #include "MeshBuilder.h"
+#include "MeshList.h"
 
 //Include GLEW
 #include <GL/glew.h>
