@@ -45,3 +45,13 @@ void EntityBase::SetCollider(const bool _value)
 {
 	m_bCollider = _value;
 }
+
+bool EntityBase::HasPhysic(void) const
+{
+	return m_bPhysic;
+}
+
+void EntityBase::SetPhysic(const bool _value)
+{
+	m_bPhysic = _value;
+}

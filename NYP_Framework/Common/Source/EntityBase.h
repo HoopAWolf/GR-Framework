@@ -27,12 +27,18 @@ public:
 	// Set the flag to indicate if this entity has a collider class parent
 	virtual void SetCollider(const bool _value);
 
+	// Check if this entity has a physic class parent
+	virtual bool HasPhysic(void) const;
+	// Set the flag to indicate if this entity has a physic class parent
+	virtual void SetPhysic(const bool _value);
+
 protected:
 	Vector3 position;
 	Vector3 scale;
 
 	bool isDone;
 	bool m_bCollider;
+	bool m_bPhysic;
 };
 
 #endif // ENTITY_BASE_H

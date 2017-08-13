@@ -22,7 +22,6 @@
 #include "SkyBox/SkyBoxEntity.h"
 
 #include <iostream>
-using namespace std;
 
 SceneText* SceneText::sInstance = new SceneText(SceneManager::GetInstance());
 
@@ -115,10 +114,7 @@ void SceneText::Init()
 	int a;
 
 	// Create and attach the camera to the scene
-	camera.Init(Vector3(0, 0, 10), Vector3(0, 0, 0), Vector3(0, 1, 0));
-
-
-	GraphicsManager::GetInstance()->AttachCamera(&camera);
+	//camera.Init(Vector3(0, 0, 10), Vector3(0, 0, 0), Vector3(0, 1, 0));
 
 	// Create entities into the scene
 	Create::Entity("reference", Vector3(0.0f, 0.0f, 0.0f)); // Reference
@@ -150,6 +146,13 @@ void SceneText::Init()
 		textObj[i] = Create::Text2DObject("text", Vector3(-halfWindowWidth, -halfWindowHeight + fontSize*i + halfFontSize, 0.0f), "", Vector3(fontSize, fontSize, fontSize), Color(0.0f,1.0f,0.0f));
 	}
 	textObj[0]->SetText("HELLO WORLD");
+
+	//theEditor = new Editor();
+
+	Player::GetInstance()->Init();
+	camera = new FPSCamera();
+	Player::GetInstance()->AttachCamera(camera);
+	GraphicsManager::GetInstance()->AttachCamera(Player::GetInstance()->getCamera());
 }
 
 void SceneText::Update(double dt)
@@ -196,30 +199,30 @@ void SceneText::Update(double dt)
 	// if the left mouse button was released
 	if (MouseController::GetInstance()->IsButtonReleased(MouseController::LMB))
 	{
-		cout << "Left Mouse Button was released!" << endl;
+		std::cout << "Left Mouse Button was released!" << std::endl;
 	}
 	if (MouseController::GetInstance()->IsButtonReleased(MouseController::RMB))
 	{
-		cout << "Right Mouse Button was released!" << endl;
+		std::cout << "Right Mouse Button was released!" << std::endl;
 	}
 	if (MouseController::GetInstance()->IsButtonReleased(MouseController::MMB))
 	{
-		cout << "Middle Mouse Button was released!" << endl;
+		std::cout << "Middle Mouse Button was released!" << std::endl;
 	}
 	if (MouseController::GetInstance()->GetMouseScrollStatus(MouseController::SCROLL_TYPE_XOFFSET) != 0.0)
 	{
-		cout << "Mouse Wheel has offset in X-axis of " << MouseController::GetInstance()->GetMouseScrollStatus(MouseController::SCROLL_TYPE_XOFFSET) << endl;
+		std::cout << "Mouse Wheel has offset in X-axis of " << MouseController::GetInstance()->GetMouseScrollStatus(MouseController::SCROLL_TYPE_XOFFSET) << std::endl;
 	}
 	if (MouseController::GetInstance()->GetMouseScrollStatus(MouseController::SCROLL_TYPE_YOFFSET) != 0.0)
 	{
-		cout << "Mouse Wheel has offset in Y-axis of " << MouseController::GetInstance()->GetMouseScrollStatus(MouseController::SCROLL_TYPE_YOFFSET) << endl;
+		std::cout << "Mouse Wheel has offset in Y-axis of " << MouseController::GetInstance()->GetMouseScrollStatus(MouseController::SCROLL_TYPE_YOFFSET) << std::endl;
 	}
 	// <THERE>
 
 	// Update the player position and other details based on keyboard and mouse inputs
+	Player::GetInstance()->Update(dt);
 
-
-	camera.Update(dt); // Can put the camera into an entity rather than here (Then we don't have to write this)
+	//camera.Update(dt); // Can put the camera into an entity rather than here (Then we don't have to write this)
 
 	GraphicsManager::GetInstance()->UpdateLights(dt);
 
@@ -246,7 +249,7 @@ void SceneText::Render()
 
 	// Setup 3D pipeline then render 3D
 	GraphicsManager::GetInstance()->SetPerspectiveProjection(45.0f, 4.0f / 3.0f, 0.1f, 10000.0f);
-	GraphicsManager::GetInstance()->AttachCamera(&camera);
+	GraphicsManager::GetInstance()->AttachCamera(Player::GetInstance()->getCamera());
 	EntityManager::GetInstance()->Render();
 
 	// Setup 2D pipeline then render 2D

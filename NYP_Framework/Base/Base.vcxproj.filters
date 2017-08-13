@@ -71,6 +71,8 @@
     </ClCompile>
     <ClCompile Include="Source\HardwareAbstraction\Mouse.cpp">
       <Filter>Hardware Abstraction</Filter>
+    <ClCompile Include="Source\CollisionManager.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +120,7 @@
     </ClInclude>
     <ClInclude Include="Source\HardwareAbstraction\Controller.h">
       <Filter>Hardware Abstraction</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
