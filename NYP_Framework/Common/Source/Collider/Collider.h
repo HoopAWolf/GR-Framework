@@ -1,11 +1,11 @@
 #pragma once
 #include "../Vector3.h"
 
-class CCollider
+class Collision
 {
 public:
-	CCollider();
-	virtual ~CCollider();
+	Collision();
+	virtual ~Collision();
 
 	// Set the maxAABB and minAABB
 	virtual void SetAABB(Vector3 maxAABB, Vector3 minAABB);

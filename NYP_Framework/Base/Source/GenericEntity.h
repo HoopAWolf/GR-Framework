@@ -7,7 +7,7 @@
 
 class Mesh;
 
-class GenericEntity : public EntityBase, public CCollider
+class GenericEntity : public EntityBase, public Collision
 {
 public:
 	GenericEntity(Mesh* _modelMesh);
