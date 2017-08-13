@@ -1,4 +1,29 @@
-﻿  Editor.cpp
+﻿  Controller.cpp
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(265): warning C4018: '<' : signed/unsigned mismatch
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(284): warning C4244: 'return' : conversion from 'unsigned __int64' to 'int', possible loss of data
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(300): warning C4244: 'return' : conversion from 'unsigned __int64' to 'int', possible loss of data
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(347): warning C4018: '<=' : signed/unsigned mismatch
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(369): warning C4244: 'return' : conversion from 'double' to 'int', possible loss of data
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(389): warning C4018: '<=' : signed/unsigned mismatch
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\base\source\hardwareabstraction\controller.cpp(31): warning C4114: same type qualifier used more than once
+  Generating Code...
+  Compiling...
+  Mouse.cpp
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(265): warning C4018: '<' : signed/unsigned mismatch
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(284): warning C4244: 'return' : conversion from 'unsigned __int64' to 'int', possible loss of data
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(300): warning C4244: 'return' : conversion from 'unsigned __int64' to 'int', possible loss of data
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(347): warning C4018: '<=' : signed/unsigned mismatch
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(369): warning C4244: 'return' : conversion from 'double' to 'int', possible loss of data
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(389): warning C4018: '<=' : signed/unsigned mismatch
+  Keyboard.cpp
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(265): warning C4018: '<' : signed/unsigned mismatch
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(284): warning C4244: 'return' : conversion from 'unsigned __int64' to 'int', possible loss of data
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(300): warning C4244: 'return' : conversion from 'unsigned __int64' to 'int', possible loss of data
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(347): warning C4018: '<=' : signed/unsigned mismatch
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(369): warning C4244: 'return' : conversion from 'double' to 'int', possible loss of data
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\common\source\mymath.h(389): warning C4018: '<=' : signed/unsigned mismatch
+  Generating Code...
+c:\users\theunholygod\documents\school\year 2 semester 1\sp3\nyp_framework\base\source\hardwareabstraction\keyboard.cpp(40): warning C4715: 'Keyboard::Read' : not all control paths return a value
 Application.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Base.vcxproj -> C:\Users\TheUnholyGod\Documents\School\Year 2 Semester 1\SP3\NYP_Framework\Debug\Base.exe

@@ -103,7 +103,7 @@
     <ClCompile Include="Source\timer.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
-    <ClCompile Include="Loader.cpp">
+    <ClCompile Include="Source\Loader.cpp">
       <Filter>Loader</Filter>
     </ClCompile>
   </ItemGroup>
@@ -198,7 +198,7 @@
     <ClInclude Include="Source\SingletonTemplate.h">
       <Filter>Framework</Filter>
     </ClInclude>
-    <ClInclude Include="Loader.h">
+    <ClInclude Include="Source\Loader.h">
       <Filter>Loader</Filter>
     </ClInclude>
   </ItemGroup>

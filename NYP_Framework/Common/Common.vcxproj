@@ -11,7 +11,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Loader.cpp" />
     <ClCompile Include="Source\BaseDatabase.cpp" />
     <ClCompile Include="Source\BaseDatabaseHandler.cpp" />
     <ClCompile Include="Source\CameraBase.cpp" />
@@ -20,6 +19,7 @@
     <ClCompile Include="Source\GraphicsManager.cpp" />
     <ClCompile Include="Source\KeyboardController.cpp" />
     <ClCompile Include="Source\LightBase.cpp" />
+    <ClCompile Include="Source\Loader.cpp" />
     <ClCompile Include="Source\LoadOBJ.cpp" />
     <ClCompile Include="Source\LoadTGA.cpp" />
     <ClCompile Include="Source\MatrixStack.cpp" />
@@ -38,7 +38,6 @@
     <ClCompile Include="Source\Win32Input.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Loader.h" />
     <ClInclude Include="Source\BaseDatabase.h" />
     <ClInclude Include="Source\BaseDatabaseHandler.h" />
     <ClInclude Include="Source\CameraBase.h" />
@@ -47,6 +46,7 @@
     <ClInclude Include="Source\GraphicsManager.h" />
     <ClInclude Include="Source\KeyboardController.h" />
     <ClInclude Include="Source\LightBase.h" />
+    <ClInclude Include="Source\Loader.h" />
     <ClInclude Include="Source\LoadOBJ.h" />
     <ClInclude Include="Source\LoadTGA.h" />
     <ClInclude Include="Source\Material.h" />

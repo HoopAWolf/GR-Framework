@@ -19,8 +19,8 @@
     <Filter Include="SkyBox">
       <UniqueIdentifier>{37a125cd-b9e3-4b31-923e-1226145f54a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Editor">
-      <UniqueIdentifier>{d0ecf673-68db-4508-b179-423fa19d5f7c}</UniqueIdentifier>
+    <Filter Include="Hardware Abstraction">
+      <UniqueIdentifier>{4f86b4e9-4200-4dcd-98fb-bef99b2a217c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -63,8 +63,14 @@
     <ClCompile Include="Source\GenericEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Editor\Editor.cpp">
-      <Filter>Editor</Filter>
+    <ClCompile Include="Source\HardwareAbstraction\Controller.cpp">
+      <Filter>Hardware Abstraction</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HardwareAbstraction\Keyboard.cpp">
+      <Filter>Hardware Abstraction</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HardwareAbstraction\Mouse.cpp">
+      <Filter>Hardware Abstraction</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -104,8 +110,14 @@
     <ClInclude Include="Source\GenericEntity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Editor\Editor.h">
-      <Filter>Editor</Filter>
+    <ClInclude Include="Source\HardwareAbstraction\Keyboard.h">
+      <Filter>Hardware Abstraction</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HardwareAbstraction\Mouse.h">
+      <Filter>Hardware Abstraction</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HardwareAbstraction\Controller.h">
+      <Filter>Hardware Abstraction</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
