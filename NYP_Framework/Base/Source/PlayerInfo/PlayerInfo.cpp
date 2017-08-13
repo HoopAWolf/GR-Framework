@@ -5,11 +5,10 @@
 #include "KeyboardController.h"
 #include "Mtx44.h"
 
-// Allocating and initializing CPlayerInfo's static data member.  
+// Allocating and initializing Player's static data member.  
 // The pointer is allocated but not the object's constructor.
-CPlayerInfo *CPlayerInfo::s_instance = 0;
 
-CPlayerInfo::CPlayerInfo(void)
+Player::Player(void)
 	: m_dSpeed(40.0)
 	, m_dAcceleration(10.0)
 	, m_bJumpUpwards(false)
@@ -24,23 +23,19 @@ CPlayerInfo::CPlayerInfo(void)
 {
 }
 
-CPlayerInfo::~CPlayerInfo(void)
+Player::~Player(void)
 {
 	m_pTerrain = NULL;
 }
 
 // Initialise this class instance
-void CPlayerInfo::Init(void)
+void Player::Init(void)
 {
 	// Set the default values
 	defaultPosition.Set(0,0,10);
-	defaultTarget.Set(0,0,0);
-	defaultUp.Set(0,1,0);
 
 	// Set the current values
 	position.Set(0, 0, 10);
-	target.Set(0, 0, 0);
-	up.Set(0, 1, 0);
 
 	// Set Boundary
 	maxBoundary.Set(1,1,1);
@@ -48,7 +43,7 @@ void CPlayerInfo::Init(void)
 }
 
 // Returns true if the player is on ground
-bool CPlayerInfo::isOnGround(void)
+bool Player::isOnGround(void)
 {
 
 
@@ -57,7 +52,7 @@ bool CPlayerInfo::isOnGround(void)
 }
 
 // Returns true if the player is jumping upwards
-bool CPlayerInfo::isJumpUpwards(void)
+bool Player::isJumpUpwards(void)
 {
 
 
@@ -66,7 +61,7 @@ bool CPlayerInfo::isJumpUpwards(void)
 }
 
 // Returns true if the player is on freefall
-bool CPlayerInfo::isFreeFall(void)
+bool Player::isFreeFall(void)
 {
 
 
@@ -75,7 +70,7 @@ bool CPlayerInfo::isFreeFall(void)
 }
 
 // Set the player's status to free fall mode
-void CPlayerInfo::SetOnFreeFall(bool isOnFreeFall)
+void Player::SetOnFreeFall(bool isOnFreeFall)
 {
 
 
@@ -85,7 +80,7 @@ void CPlayerInfo::SetOnFreeFall(bool isOnFreeFall)
 }
 
 // Set the player to jumping upwards
-void CPlayerInfo::SetToJumpUpwards(bool isOnJumpUpwards)
+void Player::SetToJumpUpwards(bool isOnJumpUpwards)
 {
 
 
@@ -95,44 +90,32 @@ void CPlayerInfo::SetToJumpUpwards(bool isOnJumpUpwards)
 }
 
 // Set position
-void CPlayerInfo::SetPos(const Vector3& pos)
+void Player::SetPos(const Vector3& pos)
 {
 	position = pos;
 }
 
-// Set target
-void CPlayerInfo::SetTarget(const Vector3& target)
-{
-	this->target = target;
-}
-
-// Set position
-void CPlayerInfo::SetUp(const Vector3& up)
-{
-	this->up = up;
-}
-
 // Set m_dJumpAcceleration of the player
-void CPlayerInfo::SetJumpAcceleration(const double m_dJumpAcceleration)
+void Player::SetJumpAcceleration(const double m_dJumpAcceleration)
 {
 	this->m_dJumpAcceleration = m_dJumpAcceleration;
 }
 
 // Set Fall Acceleration of the player
-void CPlayerInfo::SetFallAcceleration(const double m_dFallAcceleration)
+void Player::SetFallAcceleration(const double m_dFallAcceleration)
 {
 	this->m_dFallAcceleration = m_dFallAcceleration;
 }
 
 // Set the boundary for the player info
-void CPlayerInfo::SetBoundary(Vector3 max, Vector3 min)
+void Player::SetBoundary(Vector3 max, Vector3 min)
 {
 	maxBoundary = max;
 	minBoundary = min;
 }
 
 // Set the terrain for the player info
-void CPlayerInfo::SetTerrain(GroundEntity* m_pTerrain)
+void Player::SetTerrain(GroundEntity* m_pTerrain)
 {
 
 
@@ -143,49 +126,36 @@ void CPlayerInfo::SetTerrain(GroundEntity* m_pTerrain)
 }
 
 // Stop the player's movement
-void CPlayerInfo::StopVerticalMovement(void)
+void Player::StopVerticalMovement(void)
 {
 	m_bJumpUpwards = false;
 	m_bFallDownwards = false;
 }
 
 // Reset this player instance to default
-void CPlayerInfo::Reset(void)
+void Player::Reset(void)
 {
 	// Set the current values to default values
 	position = defaultPosition;
-	target = defaultTarget;
-	up = defaultUp;
 
 	// Stop vertical movement too
 	StopVerticalMovement();
 }
 
 // Get position x of the player
-Vector3 CPlayerInfo::GetPos(void) const
+Vector3 Player::GetPos(void) const
 {
 	return position;
 }
 
-// Get target
-Vector3 CPlayerInfo::GetTarget(void) const
-{
-	return target;
-}
-// Get Up
-Vector3 CPlayerInfo::GetUp(void) const
-{
-	return up;
-}
-
 // Get m_dJumpAcceleration of the player
-double CPlayerInfo::GetJumpAcceleration(void) const
+double Player::GetJumpAcceleration(void) const
 {
 	return m_dJumpAcceleration;
 }
 
 // Update Jump Upwards
-void CPlayerInfo::UpdateJumpUpwards(double dt)
+void Player::UpdateJumpUpwards(double dt)
 {
 	if (m_bJumpUpwards == false)
 		return;
@@ -212,7 +182,7 @@ void CPlayerInfo::UpdateJumpUpwards(double dt)
 }
 
 // Update FreeFall
-void CPlayerInfo::UpdateFreeFall(double dt)
+void Player::UpdateFreeFall(double dt)
 {
 	if (m_bFallDownwards == false)
 		return;
@@ -242,7 +212,7 @@ void CPlayerInfo::UpdateFreeFall(double dt)
 /********************************************************************************
  Hero Update
  ********************************************************************************/
-void CPlayerInfo::Update(double dt)
+void Player::Update(double dt)
 {
 	double mouse_diff_x, mouse_diff_y;
 	MouseController::GetInstance()->GetMouseDelta(mouse_diff_x, mouse_diff_y);
@@ -250,127 +220,46 @@ void CPlayerInfo::Update(double dt)
 	double camera_yaw = mouse_diff_x * 0.0174555555555556;		// 3.142 / 180.0
 	double camera_pitch = mouse_diff_y * 0.0174555555555556;	// 3.142 / 180.0
 
+	if (attachedCamera == NULL)
+		std::cout << "No camera attached! Please make sure to attach one" << std::endl;
+	direction = attachedCamera->GetCameraTarget() - attachedCamera->GetCameraPos();
+	//lock player movement to the ground only
+	//direction.y = 0;
+	direction.Normalize();
+
+	Vector3 up(0, 1, 0);
+
 	// Update the position if the WASD buttons were activated
 	if (KeyboardController::GetInstance()->IsKeyDown('W') ||
 		KeyboardController::GetInstance()->IsKeyDown('A') ||
 		KeyboardController::GetInstance()->IsKeyDown('S') ||
 		KeyboardController::GetInstance()->IsKeyDown('D'))
 	{
-		Vector3 viewVector = target - position;
 		Vector3 rightUV;
 		if (KeyboardController::GetInstance()->IsKeyDown('W'))
 		{
-			position += viewVector.Normalized() * (float)m_dSpeed * (float)dt;
+			position += direction.Normalized() * (float)m_dSpeed * (float)dt;
 		}
 		else if (KeyboardController::GetInstance()->IsKeyDown('S'))
 		{
-			position -= viewVector.Normalized() * (float)m_dSpeed * (float)dt;
+			position -= direction.Normalized() * (float)m_dSpeed * (float)dt;
 		}
 		if (KeyboardController::GetInstance()->IsKeyDown('A'))
 		{
-			rightUV = (viewVector.Normalized()).Cross(up);
+			rightUV = (direction.Normalized()).Cross(up);
 			rightUV.y = 0;
 			rightUV.Normalize();
 			position -= rightUV * (float)m_dSpeed * (float)dt;
 		}
 		else if (KeyboardController::GetInstance()->IsKeyDown('D'))
 		{
-			rightUV = (viewVector.Normalized()).Cross(up);
+			rightUV = (direction.Normalized()).Cross(up);
 			rightUV.y = 0;
 			rightUV.Normalize();
 			position += rightUV * (float)m_dSpeed * (float)dt;
 		}
 		// Constrain the position
 		Constrain();
-		// Update the target
-		target = position + viewVector;
-	}
-
-	// Rotate the view direction
-	if (KeyboardController::GetInstance()->IsKeyDown(VK_LEFT) ||
-		KeyboardController::GetInstance()->IsKeyDown(VK_RIGHT) ||
-		KeyboardController::GetInstance()->IsKeyDown(VK_UP) ||
-		KeyboardController::GetInstance()->IsKeyDown(VK_DOWN))
-	{
-		Vector3 viewUV = (target - position).Normalized();
-		Vector3 rightUV;
-		if (KeyboardController::GetInstance()->IsKeyDown(VK_LEFT))
-		{
-			float yaw = (float)m_dSpeed * (float)dt;
-			Mtx44 rotation;
-			rotation.SetToRotation(yaw, 0, 1, 0);
-			viewUV = rotation * viewUV;
-			target = position + viewUV;
-			rightUV = viewUV.Cross(up);
-			rightUV.y = 0;
-			rightUV.Normalize();
-			up = rightUV.Cross(viewUV).Normalized();
-		}
-		else if (KeyboardController::GetInstance()->IsKeyDown(VK_RIGHT))
-		{
-			float yaw = (float)(-m_dSpeed * (float)dt);
-			Mtx44 rotation;
-			rotation.SetToRotation(yaw, 0, 1, 0);
-			viewUV = rotation * viewUV;
-			target = position + viewUV;
-			rightUV = viewUV.Cross(up);
-			rightUV.y = 0;
-			rightUV.Normalize();
-			up = rightUV.Cross(viewUV).Normalized();
-		}
-		if (KeyboardController::GetInstance()->IsKeyDown(VK_UP))
-		{
-			float pitch = (float)(m_dSpeed * (float)dt);
-			rightUV = viewUV.Cross(up);
-			rightUV.y = 0;
-			rightUV.Normalize();
-			up = rightUV.Cross(viewUV).Normalized();
-			Mtx44 rotation;
-			rotation.SetToRotation(pitch, rightUV.x, rightUV.y, rightUV.z);
-			viewUV = rotation * viewUV;
-			target = position + viewUV;
-		}
-		else if (KeyboardController::GetInstance()->IsKeyDown(VK_DOWN))
-		{
-			float pitch = (float)(-m_dSpeed * (float)dt);
-			rightUV = viewUV.Cross(up);
-			rightUV.y = 0;
-			rightUV.Normalize();
-			up = rightUV.Cross(viewUV).Normalized();
-			Mtx44 rotation;
-			rotation.SetToRotation(pitch, rightUV.x, rightUV.y, rightUV.z);
-			viewUV = rotation * viewUV;
-			target = position + viewUV;
-		}
-	}
-
-	//Update the camera direction based on mouse move
-	{
-		Vector3 viewUV = (target - position).Normalized();
-		Vector3 rightUV;
-
-		{
-			float yaw = (float)(-m_dSpeed * camera_yaw * (float)dt);
-			Mtx44 rotation;
-			rotation.SetToRotation(yaw, 0, 1, 0);
-			viewUV = rotation * viewUV;
-			target = position + viewUV;
-			rightUV = viewUV.Cross(up);
-			rightUV.y = 0;
-			rightUV.Normalize();
-			up = rightUV.Cross(viewUV).Normalized();
-		}
-		{
-			float pitch = (float)(-m_dSpeed * camera_pitch * (float)dt);
-			rightUV = viewUV.Cross(up);
-			rightUV.y = 0;
-			rightUV.Normalize();
-			up = rightUV.Cross(viewUV).Normalized();
-			Mtx44 rotation;
-			rotation.SetToRotation(pitch, rightUV.x, rightUV.y, rightUV.z);
-			viewUV = rotation * viewUV;
-			target = position + viewUV;
-		}
 	}
 
 	// If the user presses SPACEBAR, then make him jump
@@ -408,13 +297,15 @@ void CPlayerInfo::Update(double dt)
 	// If a camera is attached to this playerInfo class, then update it
 	if (attachedCamera)
 	{
+		Vector3 cameraView = attachedCamera->GetCameraTarget() - attachedCamera->GetCameraPos();
 		attachedCamera->SetCameraPos(position);
-		attachedCamera->SetCameraTarget(target);
+		attachedCamera->SetCameraTarget(position + cameraView.Normalized());
+		attachedCamera->Update(dt);
 	}
 }
 
 // Constrain the position within the borders
-void CPlayerInfo::Constrain(void)
+void Player::Constrain(void)
 {
 
 
@@ -434,12 +325,22 @@ void CPlayerInfo::Constrain(void)
 
 }
 
-void CPlayerInfo::AttachCamera(FPSCamera* _cameraPtr)
+FPSCamera * Player::getCamera()
+{
+	return attachedCamera;
+}
+
+void Player::AttachCamera(FPSCamera* _cameraPtr)
 {
 	attachedCamera = _cameraPtr;
+	Vector3 target = position + Vector3(1, 0, 0);
+	Vector3 view = target - position;
+	Vector3 up = Vector3(0,0,1).Cross(view).Normalized();
+	attachedCamera->Init(position, target, up);
+	std::cout << up << std::endl;
 }
 
-void CPlayerInfo::DetachCamera()
+void Player::DetachCamera()
 {
 	attachedCamera = nullptr;
 }

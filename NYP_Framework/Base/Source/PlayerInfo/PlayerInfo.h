@@ -2,31 +2,14 @@
 #include "Vector3.h"
 #include "../FPSCamera.h"
 #include "../GroundEntity.h"
+#include "SingletonTemplate.h"
 
-class CPlayerInfo
+class Player : public Singleton<Player>
 {
-protected:
-	static CPlayerInfo *s_instance;
-	CPlayerInfo(void);
-
+	friend Singleton<Player>;
 public:
-	static CPlayerInfo *GetInstance()
-	{
-		if (!s_instance)
-			s_instance = new CPlayerInfo;
-		return s_instance;
-	}
-	static bool DropInstance()
-	{
-		if (s_instance)
-		{
-			delete s_instance;
-			s_instance = NULL;
-			return true;
-		}
-		return false;
-	}
-	~CPlayerInfo(void);
+	Player();
+	~Player();
 
 	// Initialise this class instance
 	void Init(void);
@@ -47,10 +30,6 @@ public:
 
 	// Set position
 	void SetPos(const Vector3& pos);
-	// Set target
-	void SetTarget(const Vector3& target);
-	// Set Up
-	void SetUp(const Vector3& up);
 	// Set m_dJumpSpeed of the player
 	void SetJumpSpeed(const double m_dJumpSpeed);
 	// Set m_dJumpAcceleration of the player
@@ -66,10 +45,6 @@ public:
 
 	// Get position
 	Vector3 GetPos(void) const;
-	// Get target
-	Vector3 GetTarget(void) const;
-	// Get Up
-	Vector3 GetUp(void) const;
 	// Get Jump Speed of the player
 	double GetJumpSpeed(void) const;
 	// Get Jump Acceleration of the player
@@ -90,12 +65,13 @@ public:
 	void Constrain(void);
 
 	// Handling Camera
+	FPSCamera* getCamera();
 	void AttachCamera(FPSCamera* _cameraPtr);
 	void DetachCamera();
 
 private:
-	Vector3 defaultPosition, defaultTarget, defaultUp;
-	Vector3 position, target, up;
+	Vector3 defaultPosition;
+	Vector3 position, direction;
 	Vector3 maxBoundary, minBoundary;
 	GroundEntity* m_pTerrain;
 

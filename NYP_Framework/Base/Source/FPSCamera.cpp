@@ -40,36 +40,6 @@ void FPSCamera::Update(double dt)
 	double camera_yaw = mouse_diff_x * 0.0174555555555556;		// 3.142 / 180.0
 	double camera_pitch = mouse_diff_y * 0.0174555555555556;	// 3.142 / 180.0
 
-	if(KeyboardController::GetInstance()->IsKeyDown('A'))
-	{
-		Vector3 view = (target - position).Normalized();
-		Vector3 right = view.Cross(up);
-		right.y = 0;
-		right.Normalize();
-		position -= right * CAMERA_SPEED * (float)dt;
-		target -= right * CAMERA_SPEED * (float)dt;
-	}
-	if(KeyboardController::GetInstance()->IsKeyDown('D'))
-	{
-		Vector3 view = (target - position).Normalized();
-		Vector3 right = view.Cross(up);
-		right.y = 0;
-		right.Normalize();
-		position += right * CAMERA_SPEED * (float)dt;
-		target += right * CAMERA_SPEED * (float)dt;
-	}
-	if(KeyboardController::GetInstance()->IsKeyDown('W'))
-	{
-		Vector3 view = (target - position).Normalized();
-		position += view * CAMERA_SPEED * (float)dt;
-		target += view * CAMERA_SPEED * (float)dt;
-	}
-	if(KeyboardController::GetInstance()->IsKeyDown('S'))
-	{
-		Vector3 view = (target - position).Normalized();
-		position -= view * CAMERA_SPEED * (float)dt;
-		target -= view * CAMERA_SPEED * (float)dt;
-	}
 	if(KeyboardController::GetInstance()->IsKeyDown(VK_LEFT))
 	{
 		Vector3 view = (target - position).Normalized();

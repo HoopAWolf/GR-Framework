@@ -115,10 +115,7 @@ void SceneText::Init()
 	int a;
 
 	// Create and attach the camera to the scene
-	camera.Init(Vector3(0, 0, 10), Vector3(0, 0, 0), Vector3(0, 1, 0));
-
-
-	GraphicsManager::GetInstance()->AttachCamera(&camera);
+	//camera.Init(Vector3(0, 0, 10), Vector3(0, 0, 0), Vector3(0, 1, 0));
 
 	// Create entities into the scene
 	Create::Entity("reference", Vector3(0.0f, 0.0f, 0.0f)); // Reference
@@ -152,6 +149,11 @@ void SceneText::Init()
 	textObj[0]->SetText("HELLO WORLD");
 
 	theEditor = new Editor();
+
+	Player::GetInstance()->Init();
+	camera = new FPSCamera();
+	Player::GetInstance()->AttachCamera(camera);
+	GraphicsManager::GetInstance()->AttachCamera(Player::GetInstance()->getCamera());
 }
 
 void SceneText::Update(double dt)
@@ -219,9 +221,9 @@ void SceneText::Update(double dt)
 	// <THERE>
 
 	// Update the player position and other details based on keyboard and mouse inputs
+	Player::GetInstance()->Update(dt);
 
-
-	camera.Update(dt); // Can put the camera into an entity rather than here (Then we don't have to write this)
+	//camera.Update(dt); // Can put the camera into an entity rather than here (Then we don't have to write this)
 
 	GraphicsManager::GetInstance()->UpdateLights(dt);
 
@@ -267,7 +269,7 @@ void SceneText::Render()
 
 	// Setup 3D pipeline then render 3D
 	GraphicsManager::GetInstance()->SetPerspectiveProjection(45.0f, 4.0f / 3.0f, 0.1f, 10000.0f);
-	GraphicsManager::GetInstance()->AttachCamera(&camera);
+	GraphicsManager::GetInstance()->AttachCamera(Player::GetInstance()->getCamera());
 	EntityManager::GetInstance()->Render();
 
 	// Setup 2D pipeline then render 2D
