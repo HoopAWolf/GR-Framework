@@ -11,7 +11,7 @@
 #include "GenericEntity.h"
 
 /*Editor*/
-#include "Editor\Editor.h"
+//#include "Editor\Editor.h"
 
 class ShaderProgram;
 class SceneManager;
@@ -43,7 +43,7 @@ private:
 	static SceneText* sInstance; // The pointer to the object that gets registered
 
 	/*Editor Object for writing and reading text files*/
-	Editor *theEditor;
+	//Editor *theEditor;
 };
 
 #endif

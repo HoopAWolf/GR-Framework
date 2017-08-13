@@ -22,7 +22,6 @@
 #include "SkyBox/SkyBoxEntity.h"
 
 #include <iostream>
-using namespace std;
 
 SceneText* SceneText::sInstance = new SceneText(SceneManager::GetInstance());
 
@@ -148,7 +147,7 @@ void SceneText::Init()
 	}
 	textObj[0]->SetText("HELLO WORLD");
 
-	theEditor = new Editor();
+	//theEditor = new Editor();
 
 	Player::GetInstance()->Init();
 	camera = new FPSCamera();
@@ -200,23 +199,23 @@ void SceneText::Update(double dt)
 	// if the left mouse button was released
 	if (MouseController::GetInstance()->IsButtonReleased(MouseController::LMB))
 	{
-		cout << "Left Mouse Button was released!" << endl;
+		std::cout << "Left Mouse Button was released!" << std::endl;
 	}
 	if (MouseController::GetInstance()->IsButtonReleased(MouseController::RMB))
 	{
-		cout << "Right Mouse Button was released!" << endl;
+		std::cout << "Right Mouse Button was released!" << std::endl;
 	}
 	if (MouseController::GetInstance()->IsButtonReleased(MouseController::MMB))
 	{
-		cout << "Middle Mouse Button was released!" << endl;
+		std::cout << "Middle Mouse Button was released!" << std::endl;
 	}
 	if (MouseController::GetInstance()->GetMouseScrollStatus(MouseController::SCROLL_TYPE_XOFFSET) != 0.0)
 	{
-		cout << "Mouse Wheel has offset in X-axis of " << MouseController::GetInstance()->GetMouseScrollStatus(MouseController::SCROLL_TYPE_XOFFSET) << endl;
+		std::cout << "Mouse Wheel has offset in X-axis of " << MouseController::GetInstance()->GetMouseScrollStatus(MouseController::SCROLL_TYPE_XOFFSET) << std::endl;
 	}
 	if (MouseController::GetInstance()->GetMouseScrollStatus(MouseController::SCROLL_TYPE_YOFFSET) != 0.0)
 	{
-		cout << "Mouse Wheel has offset in Y-axis of " << MouseController::GetInstance()->GetMouseScrollStatus(MouseController::SCROLL_TYPE_YOFFSET) << endl;
+		std::cout << "Mouse Wheel has offset in Y-axis of " << MouseController::GetInstance()->GetMouseScrollStatus(MouseController::SCROLL_TYPE_YOFFSET) << std::endl;
 	}
 	// <THERE>
 
@@ -245,19 +244,19 @@ void SceneText::Update(double dt)
 	/*Write*/
 	if (KeyboardController::GetInstance()->IsKeyPressed(VK_F1))
 	{
-		theEditor->startWriting();
+		//theEditor->startWriting();
 	}
 	/*Load*/
 	if (KeyboardController::GetInstance()->IsKeyPressed(VK_F2))
 	{
-		theEditor->startLoading();
-		if (theEditor->getFileExist())
-			theEditor->loadText();
+		//theEditor->startLoading();
+		//if (//theEditor->getFileExist())
+			//theEditor->loadText();
 	}
 	/*Delete*/
 	if (KeyboardController::GetInstance()->IsKeyPressed(VK_F3))
 	{
-		theEditor->startDeleting();
+		//theEditor->startDeleting();
 	}
 }
 

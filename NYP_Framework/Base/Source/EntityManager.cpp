@@ -1,6 +1,6 @@
 #include "EntityManager.h"
 #include "EntityBase.h"
-#include "Collider/Collider.h"
+#include "CollisionManager.h"
 
 #include <iostream>
 using namespace std;
@@ -9,11 +9,21 @@ using namespace std;
 void EntityManager::Update(double _dt)
 {
 	// Update all entities
-	std::list<EntityBase*>::iterator it, end;
+	std::list<EntityBase*>::iterator it, end, it2;
 	end = entityList.end();
 	for (it = entityList.begin(); it != end; ++it)
 	{
-		(*it)->Update(_dt);
+		EntityBase* thisEntity = *it;
+		thisEntity->Update(_dt);
+
+		for (it2 = std::next(it, 1); it2 != end; ++it2) {
+			EntityBase* thatEntity = *it2;
+			
+			//test
+			if (thisEntity->HasCollider() && thatEntity->HasCollider())
+				if (CollisionManager::GetInstance()->CheckAABBCollision(thisEntity, thatEntity))
+					std::cout << "Collided" << std::endl;
+		}
 	}
 
 	// Clean up entities that are done
@@ -89,32 +99,4 @@ EntityManager::EntityManager()
 // Destructor
 EntityManager::~EntityManager()
 {
-}
-
-// Check for overlap
-bool EntityManager::CheckOverlap(Vector3 thisMinAABB, Vector3 thisMaxAABB, Vector3 thatMinAABB, Vector3 thatMaxAABB)
-{	
-
-	return false;
-}
-
-// Check if this entity's bounding sphere collided with that entity's bounding sphere 
-bool EntityManager::CheckSphereCollision(EntityBase *ThisEntity, EntityBase *ThatEntity)
-{
-
-	return false;
-}
-
-// Check if this entity collided with another entity, but both must have collider
-bool EntityManager::CheckAABBCollision(EntityBase *ThisEntity, EntityBase *ThatEntity)
-{
-
-	return false;
-}
-
-// Check if any Collider is colliding with another Collider
-bool EntityManager::CheckForCollision(void)
-{
-
-	return false;
 }

@@ -29,6 +29,9 @@
     <Filter Include="Loader">
       <UniqueIdentifier>{29622ad0-1617-4c3f-a69e-783bf60ec9d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Physic">
+      <UniqueIdentifier>{ea9179a4-be6b-41da-b1ac-ad1907f9571e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Collider\Collider.cpp">
@@ -105,6 +108,9 @@
     </ClCompile>
     <ClCompile Include="Loader.cpp">
       <Filter>Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Physic.cpp">
+      <Filter>Physic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +206,9 @@
     </ClInclude>
     <ClInclude Include="Loader.h">
       <Filter>Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Physic.h">
+      <Filter>Physic</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

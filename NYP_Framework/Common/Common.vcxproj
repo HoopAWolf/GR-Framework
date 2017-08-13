@@ -28,6 +28,7 @@
     <ClCompile Include="Source\MeshList.cpp" />
     <ClCompile Include="Source\MouseController.cpp" />
     <ClCompile Include="Source\Mtx44.cpp" />
+    <ClCompile Include="Source\Physic.cpp" />
     <ClCompile Include="Source\RenderHelper.cpp" />
     <ClCompile Include="Source\SceneManager.cpp" />
     <ClCompile Include="Source\ShaderProgram.cpp" />
@@ -57,6 +58,7 @@
     <ClInclude Include="Source\MouseController.h" />
     <ClInclude Include="Source\Mtx44.h" />
     <ClInclude Include="Source\MyMath.h" />
+    <ClInclude Include="Source\Physic.h" />
     <ClInclude Include="Source\RenderHelper.h" />
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\SceneManager.h" />
