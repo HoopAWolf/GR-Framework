@@ -8,25 +8,7 @@ class Keyboard :
 	public Controller
 {
 private:
-    enum VK
-    {
-        VK_FORWARD = 1,
-        VK_LEFTWARD,
-        VK_BACKWARD,
-        VK_RIGHTWARD,
-        VK_FORWARD1,
-        VK_LEFT1,
-        VK_BACK1,
-        VK_RIGHT1,
-        VK_SPRINT,
-        VK_JUMP,
-        VK_RELOAD,
-        VK_CHANGE,
-        VK_RESET,
-        VK_CROUCH,
-        NUM_VK,
-    };
-    unsigned int KeyList[NUM_VK];
+    unsigned int KeyList[NUM_CONRTOLLER];
 public:
 	Keyboard();
 	virtual ~Keyboard();

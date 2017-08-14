@@ -20,6 +20,7 @@
 #include "SpriteEntity.h"
 #include "Light.h"
 #include "SkyBox/SkyBoxEntity.h"
+#include "HardwareAbstraction\Keyboard.h"
 
 #include <iostream>
 
@@ -153,12 +154,16 @@ void SceneText::Init()
 	camera = new FPSCamera();
 	Player::GetInstance()->AttachCamera(camera);
 	GraphicsManager::GetInstance()->AttachCamera(Player::GetInstance()->getCamera());
+	this->keyboard = new Keyboard();
+	keyboard->Create();
 }
 
 void SceneText::Update(double dt)
 {
 	// Update our entities
 	EntityManager::GetInstance()->Update(dt);
+
+	keyboard->Read(dt);
 
 	// THIS WHOLE CHUNK TILL <THERE> CAN REMOVE INTO ENTITIES LOGIC! Or maybe into a scene function to keep the update clean
 	if(KeyboardController::GetInstance()->IsKeyDown('1'))

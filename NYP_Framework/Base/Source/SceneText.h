@@ -14,6 +14,8 @@ class ShaderProgram;
 class SceneManager;
 class TextEntity;
 class Light;
+class Keyboard;
+
 class SceneText : public Scene
 {	
 public:
@@ -36,7 +38,7 @@ private:
 	Light* lights[2];
 
 	GenericEntity* theCube;
-
+	Keyboard* keyboard;
 	static SceneText* sInstance; // The pointer to the object that gets registered
 };
 

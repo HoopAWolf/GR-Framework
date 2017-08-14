@@ -21,6 +21,10 @@ Keyboard::~Keyboard()
 bool Keyboard::Create(Player* thePlayerInfo)
 {
 	Controller::Create(thePlayerInfo);
+	KeyList[CONTROLLER_MOVEFRONT] = 'W';
+	KeyList[CONTROLLER_MOVEBACK] = 'S';
+	KeyList[CONTROLLER_MOVELEFT] = 'A';
+	KeyList[CONTROLLER_MOVERIGHT] = 'D';
 
 	return false;
 }
@@ -37,4 +41,12 @@ int Keyboard::Read(const float deltaTime)
 	Controller::Read(deltaTime);
 	if (_CONTROLLER_KEYBOARD_DEBUG)
 	return 0;
+
+	for (int i = 0;i < NUM_CONRTOLLER;++i)
+	{
+		if (KeyboardController::GetInstance()->IsKeyDown(KeyList[i]))
+		{
+			(this->*(controllerfunc[i]))(deltaTime);
+		}
+	}
 }
