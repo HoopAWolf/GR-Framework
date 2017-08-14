@@ -40,6 +40,12 @@ private:
 	GenericEntity* theCube;
 	Keyboard* keyboard;
 	static SceneText* sInstance; // The pointer to the object that gets registered
+
+
+	void RenderPassGPass();//PRE RENDER PASS
+	void RenderPassMain();//MAIN RENDER PASS
+	void RenderWorld();
+	Mesh* light_depth_mesh;
 };
 
 #endif

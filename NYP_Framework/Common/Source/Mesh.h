@@ -4,6 +4,8 @@
 #include <string>
 #include "Material.h"
 
+#define MAX_TEXTURES 4
+
 class Mesh
 {
 public:
@@ -26,7 +28,7 @@ public:
 	unsigned indexSize;
 
 	Material material;
-	unsigned textureID;
+	unsigned textureID[MAX_TEXTURES];
 };
 
 #endif

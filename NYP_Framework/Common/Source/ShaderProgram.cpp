@@ -92,7 +92,10 @@ void ShaderProgram::UpdateInt(const std::string& _name, int _value)
 	unsigned int ID = GetOrAddUniform(_name);
 	
 	if (ID == SHADER_ERROR)
+	{
+		std::cout << "Shader Parameter : " << _name << " has error!" << std::endl;
 		return;
+	}
 
 	UpdateInt(ID, _value);
 }

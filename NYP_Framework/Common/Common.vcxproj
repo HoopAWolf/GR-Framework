@@ -14,6 +14,7 @@
     <ClCompile Include="Source\BaseDatabase.cpp" />
     <ClCompile Include="Source\CameraBase.cpp" />
     <ClCompile Include="Source\Collider\Collider.cpp" />
+    <ClCompile Include="Source\DepthFBO.cpp" />
     <ClCompile Include="Source\EntityBase.cpp" />
     <ClCompile Include="Source\GraphicsManager.cpp" />
     <ClCompile Include="Source\KeyboardController.cpp" />
@@ -30,6 +31,7 @@
     <ClCompile Include="Source\Physic.cpp" />
     <ClCompile Include="Source\RenderHelper.cpp" />
     <ClCompile Include="Source\SceneManager.cpp" />
+    <ClCompile Include="Source\shader.cpp" />
     <ClCompile Include="Source\ShaderProgram.cpp" />
     <ClCompile Include="Source\timer.cpp" />
     <ClCompile Include="Source\Utility.cpp" />
@@ -41,6 +43,7 @@
     <ClInclude Include="Source\BaseDatabase.h" />
     <ClInclude Include="Source\CameraBase.h" />
     <ClInclude Include="Source\Collider\Collider.h" />
+    <ClInclude Include="Source\DepthFBO.h" />
     <ClInclude Include="Source\EntityBase.h" />
     <ClInclude Include="Source\GraphicsManager.h" />
     <ClInclude Include="Source\KeyboardController.h" />
@@ -60,6 +63,7 @@
     <ClInclude Include="Source\RenderHelper.h" />
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\SceneManager.h" />
+    <ClInclude Include="Source\shader.hpp" />
     <ClInclude Include="Source\ShaderProgram.h" />
     <ClInclude Include="Source\SingletonTemplate.h" />
     <ClInclude Include="Source\SQLKeywords.h" />

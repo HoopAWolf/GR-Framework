@@ -23,6 +23,7 @@
 #include "HardwareAbstraction\Keyboard.h"
 
 #include <iostream>
+#include "RenderHelper.h"
 
 SceneText* SceneText::sInstance = new SceneText(SceneManager::GetInstance());
 
@@ -41,7 +42,7 @@ SceneText::~SceneText()
 
 void SceneText::Init()
 {
-	currProg = GraphicsManager::GetInstance()->LoadShader("default", "Shader//Texture.vertexshader", "Shader//Texture.fragmentshader");
+	currProg = GraphicsManager::GetInstance()->LoadShader("default", "Shader//Shadow.vertexshader", "Shader//Shadow.fragmentshader");
 	
 	// Tell the shader program to store these uniform locations
 	currProg->AddUniform("MVP");
@@ -75,11 +76,50 @@ void SceneText::Init()
 	currProg->AddUniform("lights[1].cosCutoff");
 	currProg->AddUniform("lights[1].cosInner");
 	currProg->AddUniform("lights[1].exponent");
-	currProg->AddUniform("colorTextureEnabled");
-	currProg->AddUniform("colorTexture");
+	currProg->AddUniform("colorTextureEnabled[0]");
+	currProg->AddUniform("colorTexture[0]");
+	currProg->AddUniform("colorTextureEnabled[1]");
+	currProg->AddUniform("colorTexture[1]");
+	currProg->AddUniform("colorTextureEnabled[2]");
+	currProg->AddUniform("colorTexture[2]");
+	currProg->AddUniform("colorTextureEnabled[3]");
+	currProg->AddUniform("colorTexture[3]");
+	currProg->AddUniform("colorTextureEnabled[4]");
+	currProg->AddUniform("colorTexture[4]");
+	currProg->AddUniform("colorTextureEnabled[5]");
+	currProg->AddUniform("colorTexture[5]");
+	currProg->AddUniform("colorTextureEnabled[6]");
+	currProg->AddUniform("colorTexture[6]");
+	currProg->AddUniform("colorTextureEnabled[7]");
+	currProg->AddUniform("colorTexture[7]");
 	currProg->AddUniform("textEnabled");
 	currProg->AddUniform("textColor");
+
+	currProg->AddUniform("shadowMap");
+	currProg->AddUniform("lightDepthMVP");
 	
+	GraphicsManager::GetInstance()->m_gPassShaderID = LoadShaders("Shader//GPass.vertexshader", "Shader//GPass.fragmentshader");
+	GraphicsManager::GetInstance()->gPass_params[GraphicsManager::GPASS_UNIFORM_TYPE::U_SHADOW_COLOR_TEXTURE_ENABLED] =
+		glGetUniformLocation(GraphicsManager::GetInstance()->m_gPassShaderID, "colorTextureEnabled[0]");
+	GraphicsManager::GetInstance()->gPass_params[GraphicsManager::GPASS_UNIFORM_TYPE::U_SHADOW_COLOR_TEXTURE] =
+		glGetUniformLocation(GraphicsManager::GetInstance()->m_gPassShaderID, "colorTexture[0]");
+	GraphicsManager::GetInstance()->gPass_params[GraphicsManager::GPASS_UNIFORM_TYPE::U_SHADOW_COLOR_TEXTURE_ENABLED1] =
+		glGetUniformLocation(GraphicsManager::GetInstance()->m_gPassShaderID, "colorTextureEnabled[1]");
+	GraphicsManager::GetInstance()->gPass_params[GraphicsManager::GPASS_UNIFORM_TYPE::U_SHADOW_COLOR_TEXTURE1] =
+		glGetUniformLocation(GraphicsManager::GetInstance()->m_gPassShaderID, "colorTexture[1]");
+	GraphicsManager::GetInstance()->gPass_params[GraphicsManager::GPASS_UNIFORM_TYPE::U_SHADOW_COLOR_TEXTURE_ENABLED2] =
+		glGetUniformLocation(GraphicsManager::GetInstance()->m_gPassShaderID, "colorTextureEnabled[2]");
+	GraphicsManager::GetInstance()->gPass_params[GraphicsManager::GPASS_UNIFORM_TYPE::U_SHADOW_COLOR_TEXTURE2] =
+		glGetUniformLocation(GraphicsManager::GetInstance()->m_gPassShaderID, "colorTexture[2]");
+	GraphicsManager::GetInstance()->gPass_params[GraphicsManager::GPASS_UNIFORM_TYPE::U_SHADOW_COLOR_TEXTURE_ENABLED3] =
+		glGetUniformLocation(GraphicsManager::GetInstance()->m_gPassShaderID, "colorTextureEnabled[3]");
+	GraphicsManager::GetInstance()->gPass_params[GraphicsManager::GPASS_UNIFORM_TYPE::U_SHADOW_COLOR_TEXTURE3] =
+		glGetUniformLocation(GraphicsManager::GetInstance()->m_gPassShaderID, "colorTexture[3]");
+
+	GraphicsManager::GetInstance()->gPass_params[GraphicsManager::GPASS_UNIFORM_TYPE::U_LIGHT_DEPTH_MVP_GPASS] =
+		glGetUniformLocation(GraphicsManager::GetInstance()->m_gPassShaderID, "lightDepthMVP");
+	GraphicsManager::GetInstance()->m_lightDepthFBO.Init(1024, 1024);
+
 	// Tell the graphics manager to use the shader we just loaded
 	GraphicsManager::GetInstance()->SetActiveShader("default");
 
@@ -106,7 +146,7 @@ void SceneText::Init()
 	lights[1]->power = 0.4f;
 	lights[1]->name = "lights[1]";
 
-	currProg->UpdateInt("numLights", 1);
+	currProg->UpdateInt("numLights", 2);
 	currProg->UpdateInt("textEnabled", 0);
 	
 	// Create the playerinfo instance, which manages all information about the player
@@ -156,6 +196,11 @@ void SceneText::Init()
 	GraphicsManager::GetInstance()->AttachCamera(Player::GetInstance()->getCamera());
 	this->keyboard = new Keyboard();
 	keyboard->Create();
+
+	//light testing
+	light_depth_mesh = MeshBuilder::GetInstance()->GenerateQuad("light_depth_mesh", Color(1, 0, 1), 1);
+	light_depth_mesh->textureID[0] = GraphicsManager::GetInstance()->m_lightDepthFBO.GetTexture();
+	//light_depth_mesh->textureID[0] = LoadTGA("Image//calibri.tga");
 }
 
 void SceneText::Update(double dt)
@@ -248,21 +293,124 @@ void SceneText::Update(double dt)
 
 void SceneText::Render()
 {
+
+	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	//GraphicsManager::GetInstance()->UpdateLightUniforms();
+
+	//// Setup 3D pipeline then render 3D
+	//GraphicsManager::GetInstance()->SetPerspectiveProjection(45.0f, 4.0f / 3.0f, 0.1f, 10000.0f);
+	//GraphicsManager::GetInstance()->AttachCamera(Player::GetInstance()->getCamera());
+	//EntityManager::GetInstance()->Render();
+
+	//// Setup 2D pipeline then render 2D
+	//int halfWindowWidth = Application::GetInstance().GetWindowWidth() / 2;
+	//int halfWindowHeight = Application::GetInstance().GetWindowHeight() / 2;
+	//GraphicsManager::GetInstance()->SetOrthographicProjection(-halfWindowWidth, halfWindowWidth, -halfWindowHeight, halfWindowHeight, -10, 10);
+	//GraphicsManager::GetInstance()->DetachCamera();
+	//EntityManager::GetInstance()->RenderUI();
+
+	//******************************* PRE RENDER PASS *************************************
+	RenderPassGPass();
+	//******************************* MAIN RENDER PASS ************************************
+	RenderPassMain();
+}
+
+void SceneText::RenderPassGPass()
+{
+	GraphicsManager* g = GraphicsManager::GetInstance();
+
+	g->m_renderPass = g->RENDER_PASS_PRE;
+	g->m_lightDepthFBO.BindForWriting();
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+	glClear(GL_DEPTH_BUFFER_BIT);
+	glUseProgram(g->m_gPassShaderID);
+	//These matrices should change when light position or direction changes
+	Light* light = dynamic_cast<Light*>(g->GetLight("lights[0]"));
+	if (light->type == Light::LIGHT_DIRECTIONAL)
+		g->m_lightDepthProj.SetToOrtho(-10, 10, -10, 10, -10, 20);
+	else
+		g->m_lightDepthProj.SetToPerspective(90, 1.f, 0.1, 10);
+
+
+	g->m_lightDepthView.SetToLookAt(light->position.x,
+		light->position.y, light->position.z, 0, 0, 0, 0, 1, 0);
+
+	RenderWorld();
+}
+//******************************* MAIN RENDER PASS ************************************
+void SceneText::RenderPassMain()
+{
+
+	GraphicsManager* g = GraphicsManager::GetInstance();
+	MS& ms = GraphicsManager::GetInstance()->GetModelStack();
+
+	g->m_renderPass = g->RENDER_PASS_MAIN;
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	glViewport(0, 0, Application::GetInstance().GetWindowWidth(),
+		Application::GetInstance().GetWindowHeight());
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glUseProgram(g->GetActiveShader()->GetProgramID());
+	//pass light depth texture
+	g->m_lightDepthFBO.BindForReading(GL_TEXTURE8);
+	glUniform1i(g->GetActiveShader()->GetUniform("shadowMap"), 8);
+	//... old stuffs
 
 	GraphicsManager::GetInstance()->UpdateLightUniforms();
 
-	// Setup 3D pipeline then render 3D
 	GraphicsManager::GetInstance()->SetPerspectiveProjection(45.0f, 4.0f / 3.0f, 0.1f, 10000.0f);
 	GraphicsManager::GetInstance()->AttachCamera(Player::GetInstance()->getCamera());
-	EntityManager::GetInstance()->Render();
 
-	// Setup 2D pipeline then render 2D
+	ms.LoadIdentity();
+
+	Light* light = dynamic_cast<Light*>(g->GetLight("lights[0]"));
+	ms.PushMatrix();
+	ms.Translate(light->position.x,
+		light->position.y,
+		light->position.z);
+	ms.Scale(0.1f, 0.1f, 0.1f);
+	RenderHelper::RenderMesh(MeshList::GetInstance()->GetMesh("sphere"));
+	ms.PopMatrix();
+
+	ms.PushMatrix();
+	ms.Translate(0, 0, -10);
+	//ms.Rotate(-90, 1, 0, 0);
+	ms.Scale(10, 10, 10);
+	RenderHelper::RenderMesh(light_depth_mesh);
+	ms.PopMatrix();
+
+	//placed down so alpha will work properly on ldq.
+	RenderWorld();
+
 	int halfWindowWidth = Application::GetInstance().GetWindowWidth() / 2;
 	int halfWindowHeight = Application::GetInstance().GetWindowHeight() / 2;
 	GraphicsManager::GetInstance()->SetOrthographicProjection(-halfWindowWidth, halfWindowWidth, -halfWindowHeight, halfWindowHeight, -10, 10);
 	GraphicsManager::GetInstance()->DetachCamera();
 	EntityManager::GetInstance()->RenderUI();
+
+	//RenderHelper::RenderTextOnScreen(text, std::to_string(fps), Color(0, 1, 0), 2, 0, 0);
+}
+
+void SceneText::RenderWorld()
+{
+	EntityManager::GetInstance()->Render();
+
+	MS& ms = GraphicsManager::GetInstance()->GetModelStack();
+
+	ms.PushMatrix();
+	ms.Scale(0.1f, 0.1f, 0.1f);
+	RenderHelper::RenderMeshWithLight(MeshList::GetInstance()->GetMesh("sphere"));
+	ms.PopMatrix();
+
+	ms.PushMatrix();
+	ms.Translate(0, -5, 0);
+	ms.Rotate(-90, 1, 0, 0);
+	ms.Scale(10, 10, 10);
+	RenderHelper::RenderMeshWithLight(MeshList::GetInstance()->GetMesh("quad"));
+	ms.PopMatrix();
 }
 
 void SceneText::Exit()

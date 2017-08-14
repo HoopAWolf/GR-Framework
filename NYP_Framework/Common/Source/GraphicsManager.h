@@ -6,6 +6,7 @@
 #include "MatrixStack.h"
 #include <map>
 #include <string>
+#include "DepthFBO.h"
 
 class ShaderProgram;
 class CameraBase;
@@ -47,6 +48,32 @@ public:
 	void UpdateTexture(int _slot, int _textureValue);
 	void UnbindTexture(int _slot);
 
+	enum RENDER_PASS
+	{
+		RENDER_PASS_PRE,
+		RENDER_PASS_MAIN,
+	};
+	enum GPASS_UNIFORM_TYPE
+	{
+		U_LIGHT_DEPTH_MVP_GPASS,
+
+		U_SHADOW_COLOR_TEXTURE_ENABLED,
+		U_SHADOW_COLOR_TEXTURE,
+		U_SHADOW_COLOR_TEXTURE_ENABLED1,
+		U_SHADOW_COLOR_TEXTURE1,
+		U_SHADOW_COLOR_TEXTURE_ENABLED2,
+		U_SHADOW_COLOR_TEXTURE2,
+		U_SHADOW_COLOR_TEXTURE_ENABLED3,
+		U_SHADOW_COLOR_TEXTURE3,
+
+		GPASS_UNIFORM_TYPE_COUNT
+	};
+	unsigned gPass_params[GPASS_UNIFORM_TYPE_COUNT];
+	unsigned m_gPassShaderID;
+	DepthFBO m_lightDepthFBO;
+	Mtx44 m_lightDepthProj;
+	Mtx44 m_lightDepthView;
+	RENDER_PASS m_renderPass;
 private:
 	GraphicsManager();
 	~GraphicsManager();
