@@ -28,6 +28,13 @@ void GenericEntity::Render()
 	modelStack.PopMatrix();
 }
 
+void GenericEntity::CollisionResponse(GenericEntity * ThatEntity)
+{
+	if (this->type == TEST && ThatEntity->type == TEST) {
+		//do whatever here
+	}
+}
+
 // Set the maxAABB and minAABB
 void GenericEntity::SetAABB(Vector3 maxAABB, Vector3 minAABB)
 {
