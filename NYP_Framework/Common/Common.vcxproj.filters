@@ -40,9 +40,6 @@
     <ClCompile Include="Source\BaseDatabase.cpp">
       <Filter>DataBase</Filter>
     </ClCompile>
-    <ClCompile Include="Source\BaseDatabaseHandler.cpp">
-      <Filter>DataBase</Filter>
-    </ClCompile>
     <ClCompile Include="Source\CameraBase.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
@@ -121,9 +118,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\BaseDatabase.h">
-      <Filter>DataBase</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\BaseDatabaseHandler.h">
       <Filter>DataBase</Filter>
     </ClInclude>
     <ClInclude Include="Source\LoadTGA.h">

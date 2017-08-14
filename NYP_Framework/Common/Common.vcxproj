@@ -12,7 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\BaseDatabase.cpp" />
-    <ClCompile Include="Source\BaseDatabaseHandler.cpp" />
     <ClCompile Include="Source\CameraBase.cpp" />
     <ClCompile Include="Source\Collider\Collider.cpp" />
     <ClCompile Include="Source\EntityBase.cpp" />
@@ -40,7 +39,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\BaseDatabase.h" />
-    <ClInclude Include="Source\BaseDatabaseHandler.h" />
     <ClInclude Include="Source\CameraBase.h" />
     <ClInclude Include="Source\Collider\Collider.h" />
     <ClInclude Include="Source\EntityBase.h" />
@@ -116,7 +114,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_VARIADIC_MAX=10;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\sqlite3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
     </ClCompile>

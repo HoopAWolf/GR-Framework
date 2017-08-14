@@ -1,8 +1,6 @@
 #ifndef _BASE_DATABASE_H
 #define _BASE_DATABASE_H
 
-#include "sqlite3.h"
-
 #include <string>
 #include <map>
 
