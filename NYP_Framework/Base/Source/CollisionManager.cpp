@@ -87,8 +87,13 @@ void CollisionManager::Update(std::list<EntityBase*> collisionList)
 	for (it = collisionList.begin(); it != end; ++it) {
 		for (it2 = std::next(it, 1); it2 != end; ++it) {
 			// do your checks here
-
-			//create collison response code to settle what to do
+			if (CheckAABBCollision(*it, *it2))
+			{
+				GenericEntity* thisEntity = dynamic_cast<GenericEntity*>(*it);
+				GenericEntity* thatEntity = dynamic_cast<GenericEntity*>(*it2);
+				//create collison response code to settle what to do
+				thisEntity->CollisionResponse(thatEntity);
+			}
 		}
 	}
 }

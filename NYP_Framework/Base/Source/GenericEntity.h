@@ -13,8 +13,15 @@ public:
 	GenericEntity(Mesh* _modelMesh);
 	virtual ~GenericEntity();
 
+	enum OBJECT_TYPE {
+		NONE = 0,
+		TEST
+	}type;
+
 	virtual void Update(double _dt);
 	virtual void Render();
+
+	virtual void CollisionResponse(GenericEntity* ThatEntity);
 
 	// Set the maxAABB and minAABB
 	void SetAABB(Vector3 maxAABB, Vector3 minAABB);
