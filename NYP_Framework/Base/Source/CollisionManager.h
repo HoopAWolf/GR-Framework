@@ -2,6 +2,8 @@
 #ifndef COLLISION_MANAGER_H
 #define COLLISION_MANAGER_H
 
+#include <list>
+
 #include "SingletonTemplate.h"
 #include "Vector3.h"
 #include "GenericEntity.h"
@@ -18,6 +20,8 @@ public:
 	// Check if a point is within an AABB, one must have collider
 	bool CheckPointToAABBCollision(Vector3 point, EntityBase *ThatEntity);
 
+	// Check all objects with collision
+	void Update(std::list<EntityBase*> collisionList);
 
 private:
 	CollisionManager();

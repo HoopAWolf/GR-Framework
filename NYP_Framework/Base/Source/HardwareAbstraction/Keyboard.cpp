@@ -18,7 +18,7 @@ Keyboard::~Keyboard()
 }
 
 // Create this controller
-bool Keyboard::Create(CPlayerInfo* thePlayerInfo)
+bool Keyboard::Create(Player* thePlayerInfo)
 {
 	Controller::Create(thePlayerInfo);
 

@@ -17,7 +17,7 @@ Mouse::~Mouse()
 }
 
 // Create this controller
-bool Mouse::Create(CPlayerInfo* thePlayerInfo)
+bool Mouse::Create(Player* thePlayerInfo)
 {
 	Controller::Create(thePlayerInfo);
 	if (_CONTROLLER_MOUSE_DEBUG)

@@ -31,7 +31,7 @@ public:
 	Keyboard();
 	virtual ~Keyboard();
 	// Create this controller
-	virtual bool Create(CPlayerInfo* thePlayerInfo = NULL);
+	virtual bool Create(Player* thePlayerInfo = NULL);
 	// Read from the controller
     virtual bool Load(std::string _filePath);
 	virtual int Read(const float deltaTime);

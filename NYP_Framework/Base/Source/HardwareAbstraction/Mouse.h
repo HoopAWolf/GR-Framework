@@ -9,7 +9,7 @@ public:
 	Mouse();
 	virtual ~Mouse();
 	// Create this controller
-	virtual bool Create(CPlayerInfo* thePlayerInfo = NULL);
+	virtual bool Create(Player* thePlayerInfo = NULL);
 	// Read from the controller
 	virtual int Read(const float deltaTime);
 };

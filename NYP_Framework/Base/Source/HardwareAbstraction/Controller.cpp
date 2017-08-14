@@ -19,7 +19,7 @@ Controller::~Controller()
 
 
 // Create this controller
-bool Controller::Create(CPlayerInfo* thePlayerInfo)
+bool Controller::Create(Player* thePlayerInfo)
 {
 	if (_CONTROLLER_DEBUG)
 		cout << "Controller::Create()" << endl;

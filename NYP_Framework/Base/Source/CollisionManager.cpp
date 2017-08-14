@@ -80,6 +80,19 @@ bool CollisionManager::CheckPointToAABBCollision(Vector3 point, EntityBase * Tha
 		(point.z <= thatHitbox->GetMaxAABB().z && point.z >= thatHitbox->GetMinAABB().z);
 }
 
+void CollisionManager::Update(std::list<EntityBase*> collisionList)
+{
+	std::list<EntityBase*>::iterator it, it2, end;
+	end = collisionList.end();
+	for (it = collisionList.begin(); it != end; ++it) {
+		for (it2 = std::next(it, 1); it2 != end; ++it) {
+			// do your checks here
+
+			//create collison response code to settle what to do
+		}
+	}
+}
+
 CollisionManager::CollisionManager()
 {
 }
